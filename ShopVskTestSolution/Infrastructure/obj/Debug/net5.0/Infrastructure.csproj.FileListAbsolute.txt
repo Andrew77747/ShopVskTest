@@ -1,0 +1,12 @@
+C:\Git\ShopVskTest\ShopVskTestSolution\Infrastructure\bin\Debug\net5.0\Infrastructure.deps.json
+C:\Git\ShopVskTest\ShopVskTestSolution\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
+C:\Git\ShopVskTest\ShopVskTestSolution\Infrastructure\bin\Debug\net5.0\ref\Infrastructure.dll
+C:\Git\ShopVskTest\ShopVskTestSolution\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
+C:\Git\ShopVskTest\ShopVskTestSolution\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.AssemblyReference.cache
+C:\Git\ShopVskTest\ShopVskTestSolution\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git\ShopVskTest\ShopVskTestSolution\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Git\ShopVskTest\ShopVskTestSolution\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfo.cs
+C:\Git\ShopVskTest\ShopVskTestSolution\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Git\ShopVskTest\ShopVskTestSolution\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
+C:\Git\ShopVskTest\ShopVskTestSolution\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
+C:\Git\ShopVskTest\ShopVskTestSolution\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
