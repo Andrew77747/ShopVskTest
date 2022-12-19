@@ -6,7 +6,7 @@ namespace ShopVsk.Framework.PageObjects.Pages
 {
     public class BasePage : BaseElement
     {
-        private AppSettings _settings;
+        private readonly AppSettings _settings;
 
         public BasePage(IWebDriverManager manager, AppSettings settings) : base(manager)
         {

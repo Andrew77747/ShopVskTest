@@ -6,8 +6,8 @@ namespace ShopVsk.Framework.Tools
 {
     public class SeleniumWrapper
     {
-        private IWebDriver _driver;
-        private WebDriverWait _wait;
+        private readonly IWebDriver _driver;
+        private readonly WebDriverWait _wait;
 
         public SeleniumWrapper(IWebDriver driver, WebDriverWait wait)
         {
@@ -17,15 +17,16 @@ namespace ShopVsk.Framework.Tools
 
         #region Actions
 
-        public IWebElement FindElement(By by)
+        public IWebElement FindElement(By element)
         {
-            WaitForElementDisplayed(by);
-            return _driver.FindElement(by);
+            WaitForElementDisplayed(element);
+            return _driver.FindElement(element);
         }
 
-        public List<IWebElement> FindElements(By by)
+        public List<IWebElement> FindElements(By element)
         {
-            return new List<IWebElement>(_driver.FindElements(by)); 
+            WaitForElementDisplayed(element);
+            return new List<IWebElement>(_driver.FindElements(element)); 
         }
 
         public void NavigateToUrl(string url)
@@ -33,25 +34,25 @@ namespace ShopVsk.Framework.Tools
             _driver.Navigate().GoToUrl(url);
         }
 
-        public void ClickElement(By by)
+        public void ClickElement(By element)
         {
-            FindElement(by).Click();
+            FindElement(element).Click();
         }
 
-        public void TypeAndSend(By by, string text)
+        public void TypeAndSend(By element, string text)
         {
-            FindElement(by).SendKeys(text);
+            FindElement(element).SendKeys(text);
         }
 
-        public void ClearTypeAndSend(By by, string text)
+        public void ClearTypeAndSend(By element, string text)
         {
-            FindElement(by).Clear();
-            FindElement(by).SendKeys(text);
+            FindElement(element).Clear();
+            FindElement(element).SendKeys(text);
         }
 
-        public void ScrollIntoViewElement(By by)
+        public void ScrollIntoViewElement(By element)
         {
-            var e = _driver.FindElement(by);
+            var e = _driver.FindElement(element);
             ((IJavaScriptExecutor)_driver)
                 .ExecuteScript("arguments[0].scrollIntoView(true);", e);
         }
@@ -60,11 +61,11 @@ namespace ShopVsk.Framework.Tools
 
         #region Validation
 
-        public bool IsElementExists(By by)
+        public bool IsElementExists(By element)
         {
             try
             {
-                _driver.FindElement(by);
+                _driver.FindElement(element);
                 return true;
             }
 
@@ -74,11 +75,11 @@ namespace ShopVsk.Framework.Tools
             }
         }
 
-        public bool IsElementDisplayed(By by)
+        public bool IsElementDisplayed(By element)
         {
             try
             {
-                return _driver.FindElement(by).Displayed;
+                return _driver.FindElement(element).Displayed;
             }
 
             catch (NoSuchElementException)
@@ -87,28 +88,44 @@ namespace ShopVsk.Framework.Tools
             }
         }
 
+        public bool IsElementsNotDisplayed(By element)
+        {
+            var elements = _driver.FindElements(element);
+            return elements.Count == 0 || !elements[0].Displayed;
+        }
+
 
         #endregion
 
         #region Waiters
 
-        public void WaitForElement(By by)
+        public void WaitForElement(By element)
         {
-            _wait.Until(_ => IsElementExists(by));
+            _wait.Until(_ => IsElementExists(element));
         }
 
-        public void WaitForElementDisplayed(By by)
+        public void WaitForElementDisplayed(By element)
         {
-            WaitForElement(by);
-            _wait.Until(_ => IsElementDisplayed(by));
+            WaitForElement(element);
+            _wait.Until(_ => IsElementDisplayed(element));
         }
 
-        public void WaitForElementEnabled(By by)
+        public void WaitForElementEnabled(By element)
         {
-            _wait.Until(_ => FindElement(by).Enabled);
+            _wait.Until(_ => FindElement(element).Enabled);
+        }
+
+        public void WaitForLoadingPage()
+        {
+            _wait.Until(
+                d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+        }
+
+        public void WaitForElementNotDisplayed(By element)
+        {
+            _wait.Until(_ => IsElementsNotDisplayed(element));
         }
 
         #endregion
-
     }
 }

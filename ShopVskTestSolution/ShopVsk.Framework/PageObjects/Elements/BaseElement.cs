@@ -11,11 +11,5 @@ namespace ShopVsk.Framework.PageObjects.Elements
             Wrapper = new SeleniumWrapper(manager.GetDriver(), manager.GetWaiter());
         }
 
-        #region Map of Elements
-
-        
-
-        #endregion
-
     }
 }

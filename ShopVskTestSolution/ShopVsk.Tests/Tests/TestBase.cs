@@ -10,9 +10,9 @@ namespace ShopVsk.Tests.Tests
     [TestFixture]
     public class TestBase
     {
-        public WebDriverManager Manager;
-        public AppSettings Settings;
-        private BasePage _basePage;
+        public readonly WebDriverManager Manager;
+        public readonly AppSettings Settings;
+        private readonly BasePage _basePage;
 
         public TestBase()
         {
@@ -36,11 +36,7 @@ namespace ShopVsk.Tests.Tests
                 Console.WriteLine("The screen shot was made into " + screenshot.Path);
                 TestContext.AddTestAttachment(screenshot.Path);
             }
-        }
 
-        [OneTimeTearDown]
-        public void Stop()
-        {
             Manager.Dispose();
         }
     }

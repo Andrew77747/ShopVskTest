@@ -3,21 +3,18 @@ using ShopVsk.Framework.Tools;
 
 namespace ShopVsk.Framework.PageObjects.Elements
 {
+    public enum TopMenu
+    {
+        Auto,
+        Travel,
+        Health,
+        Estate,
+        Mortgage
+    }
+
     public class Header : BaseElement
     {
-        public enum TopMenu
-        {
-            Auto,
-            Travel,
-            Health,
-            Estate,
-            Mortgage
-        }
-
-        public Header(IWebDriverManager manager) : base(manager)
-        {
-
-        }
+        public Header(IWebDriverManager manager) : base(manager){}
 
         #region Map of Elements
 
